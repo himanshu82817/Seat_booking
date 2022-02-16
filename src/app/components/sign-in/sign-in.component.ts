@@ -28,7 +28,7 @@ export class SignInComponent implements OnInit {
 
   signIn(data:any){
     const submitData:any = {
-      username:data.email,
+      username:data.email.toLowerCase(),
       password:data.password
     };
 

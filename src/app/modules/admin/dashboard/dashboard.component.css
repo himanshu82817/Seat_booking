@@ -21,7 +21,7 @@ main{
 th , td {
     text-align: center;
     border: 1px solid gray;
-    padding: 1%;
+    padding: 10px;
 }
 th{
     background-color:#ec6302bb;

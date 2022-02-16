@@ -18,22 +18,22 @@ export class DashboardComponent implements OnInit {
       private bookingServices: BookingService ) { }
   
   tableData = [{
-    "floor": "N/A",
-    "userName": "N/A",
-    "extentionNumber":"N/A",
-    "startTime": "N/A",
-    "endTime": "N/A",
-    "fromDate": "N/A",
-    "toDate": "N/A",
-    "id": "N/A"
+    floor: "N/A",
+    userName: "N/A",
+    extentionNumber:"N/A",
+    startTime: "N/A",
+    endTime: "N/A",
+    fromDate: "N/A",
+    toDate: "N/A",
+    id: "N/A"
 }]
 meetingData = {
-    "teamHead": "N/A",
-    "extentionNumber":"N/A",
-    "startTime": "N/A",
-    "endTime": "N/A",
-    "fromDate": "N/A",
-    "toDate": "N/A"
+    teamHead: "N/A",
+    extentionNumber:"N/A",
+    startTime: "N/A",
+    endTime: "N/A",
+    fromDate: "N/A",
+    toDate: "N/A"
 }
   selectedFloor = "Basement"
   toggleFloor(value){
@@ -59,7 +59,7 @@ meetingData = {
     this.userService.userDetails().subscribe(x=>{
       console.log(x)
     this.tableData = x.data
-    this.meetingData = x.data1[0]
+    this.meetingData.teamHead = x.data1[0]
     
    })
   }
@@ -80,7 +80,7 @@ meetingData = {
     }
     else {
       console.log("this seat is not available ")
-      this.snackBar.open(`This seat is Fixed for ${value.userName}`, 'OK')
+      this.snackBar.open(`This seat is Reserved for ${value.userName}`, 'OK')
     }
   }
   cancelSeat(value){

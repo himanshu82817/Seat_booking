@@ -72,10 +72,10 @@ export class BookingComponent implements OnInit {
       seatDetails: value.seat_type
 
     }
-    // console.log(submitData, "submitdata")
+    console.log(submitData, "submitdata")
     this.bookingServices.bookseat(submitData).subscribe(x => {
-      
-      if (!x.status) {
+      console.log(x);
+      if (x.status===false) {
         Swal.fire({
 
           text: `${x.message}`,
