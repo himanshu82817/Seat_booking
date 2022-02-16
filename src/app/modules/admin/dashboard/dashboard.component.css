@@ -1,0 +1,149 @@
+main{
+    /* background-color: rgb(252, 252, 252); */
+    /* height: 85%; */
+    height: 100%;
+}
+.head{
+    padding:10px 2%;
+
+}
+.bookingDetails{
+    width: 100%;
+    padding: 2% 0;
+}
+
+.bookingDetails table{
+    width: 100%;
+    border-collapse: collapse;
+    border: 1px solid black;
+}
+
+th , td {
+    text-align: center;
+    border: 1px solid gray;
+    padding: 1%;
+}
+th{
+    background-color:#ec6302bb;
+    font-weight: 500;
+}
+.seatData{
+    display: flex;
+    justify-content: space-between;
+    padding:2% 2%;
+}
+.seatData div{
+    /* width: 30%; */
+    /* height: 100px; */
+    width: 25%;
+    padding: 2% 2% 2% 1%;
+    border-radius: 5px;
+    box-shadow: 3px 4px 8px rgba(128, 128, 128, 0.405);
+}
+.seatData div p:nth-child(1){
+    font-size: 1.5rem;
+    padding: 0 0 20PX 0;
+    color: white;
+}
+.seatData div p:nth-child(2){
+    font-size: 1.5rem;
+    color: white;
+}
+.total{
+    background-color: rgb(0, 86, 179);
+}
+.booked{
+    background-color: rgb(163, 0, 0);
+}
+.available{
+    background-color: rgb(0, 138, 0);
+}
+.mapHeader{
+    display: flex;
+    justify-content:space-between;
+    align-items: flex-end;
+    padding: 0 2%;
+}
+.mapHeader div{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.mapHeader div p{
+    font-size: 16px;
+}
+.mapHeader div p i{
+    font-size: 22px;
+    color: #bb472d;
+}
+.mapHeader div p:nth-child(1) i{
+    font-weight: 100;
+    color: #4ba029;
+}
+.seats{
+    display: flex;
+    
+    flex-wrap:wrap ;
+    padding:0 2%;
+}
+.seats i{
+    font-size: 30px;
+    color: #6e6e6e;
+    margin: 1%;
+    cursor: pointer;
+    position: relative;
+}
+.seats .non-occupied{
+    font-weight: 100;
+    color: #4ba029;
+}
+.seats i p{
+    font-size: 12px;
+    color: black;
+    width: 100%;
+    text-align: center;
+}
+.seatDetails{
+    clip-path: polygon(0% 0%, 100% 0%, 100% 80%, 6% 80%, 0 100%, 0 57%, 0 53%);
+    width: 0px;
+    height: 0px;
+    background-color: #ebebeb;
+    transition: .4s;
+    border-radius: 5px;
+    position: absolute; 
+    bottom: 100%;  
+    left: 40%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    z-index: 3;
+    box-shadow: 3px 4px 8px rgba(128, 128, 128, 0.405);
+
+}
+.seatDetails p{
+    font-size: 18px;
+    font-weight: 400;
+    width: fit-content;
+    margin: 0;
+    text-align: start;
+}
+.showDetails{
+    padding: 10px;
+    width: 200px;
+    height: 100px;
+}
+@media (max-width:470px) {
+    .seatData{flex-direction: column;}
+    .seatData div{width: 100%;padding: 2% 5%;display: flex;margin: 5px 0;justify-content: space-between;}
+    .seatData div p:nth-child(1){padding:0;margin: 0 2% 0 0 ;font-size: 1rem;}
+    th , td{
+        padding: 2%; display: flex;
+    }
+    tr{
+        width: 50%;
+    }
+    table{
+        display: flex;
+    }
+}

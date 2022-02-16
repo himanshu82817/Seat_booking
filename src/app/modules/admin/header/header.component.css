@@ -1,0 +1,13 @@
+main{
+    display: flex;
+    justify-content: flex-end;
+    padding: 20px;
+    border-bottom: 1px solid gray;
+}
+i{
+    font-size: 20px;
+    width: 30px;
+}
+p{
+    cursor: pointer;
+}

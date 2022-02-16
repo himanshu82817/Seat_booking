@@ -1,0 +1,61 @@
+<main>
+    <p class="heading">Fill details to book your seat</p>
+    <div class="form">
+        <form action="" [formGroup]= "myFormGroup" (ngSubmit)="submitForm(myFormGroup.value)" >
+            <div>
+                <mat-form-field appearance="outline">
+                    <mat-label>Select Floor</mat-label>
+                    <mat-select [(ngModel)]="seatDetails.floor" formControlName="floor" >
+                        <mat-option *ngFor="let floor of floors" [value]="floor">
+                            {{floor}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <mat-form-field appearance="outline">
+                    <mat-label>Enter Extention Number</mat-label>
+                    <input formControlName="exNo" type="number" matInput placeholder="Placeholder" [(ngModel)]="seatDetails.exNo" >
+                    <mat-error *ngIf="myFormGroup.invalid">Select a valid seat No.</mat-error>
+                </mat-form-field>
+            </div>
+            <div>
+                <mat-form-field appearance="outline">
+                    <mat-label>Select Start Time</mat-label>
+                    <input formControlName="start_time" type="time" matInput placeholder="Placeholder">
+                </mat-form-field>
+                <mat-form-field appearance="outline">
+                    <mat-label>Select End Time</mat-label>
+                    <input formControlName="end_time" type="time" matInput placeholder="Placeholder">
+                </mat-form-field>
+            </div>
+            <div>
+                <mat-form-field appearance="outline">
+                    <mat-label>Select Start Date</mat-label>
+                    <input formControlName="start_date" type="date" matInput placeholder="Placeholder">
+                </mat-form-field>
+                <mat-form-field appearance="outline">
+                    <mat-label>Select End Date</mat-label>
+                    <input formControlName="end_date" type="date" matInput placeholder="Placeholder">
+                </mat-form-field>
+            </div>
+            <div>
+                <mat-form-field appearance="outline">
+                    <mat-label>Select Work Type</mat-label>
+                    <mat-select formControlName="work_type" >
+                        <mat-option *ngFor="let item of work_type" [value]="item">
+                            {{item}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <mat-form-field appearance="outline">
+                    <mat-label>Select Seat Type</mat-label>
+                    <mat-select formControlName="seat_type" [(ngModel)]="seatDetails.seat_type">
+                        <mat-option *ngFor="let item of seat_type" [value]="item">
+                            {{item}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <button mat-raised-button color="primary" >Book Seat</button>
+        </form>
+    </div>
+</main>

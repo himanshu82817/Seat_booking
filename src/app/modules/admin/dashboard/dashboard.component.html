@@ -1,0 +1,96 @@
+<main>
+    <div class="head">
+        <mat-form-field appearance="outline">
+            <mat-label>Select Floor</mat-label>
+            <mat-select value="Basement" >
+              <mat-option *ngFor="let floor of floors" [value]="floor" (click)="toggleFloor(floor)" >
+                {{floor}}
+              </mat-option>
+            </mat-select>
+        </mat-form-field>
+        <div class="bookingDetails">
+            <p>Your Bookings:-</p>
+            <div class="table">
+                <table>
+                    
+                    <tr>
+                        <th>Name</th>
+                        <th>Floor</th>
+                        <th>ExNo</th>
+                        <th>Start Time</th>
+                        <th>End Time</th>
+                        <th>Start Date</th>
+                        <th>End Date</th>
+                    </tr>
+                    <tr *ngFor="let item of tableData" >
+                        <td>{{item.userName}}</td>
+                        <td>{{item.floor}}</td>
+                        <td>{{item.extentionNumber}}</td>
+                        <td>{{item.startTime}}</td>
+                        <td>{{item.endTime}}</td>
+                        <td>{{item.fromDate}}</td>
+                        <td>{{item.toDate}}</td>
+                        <td><button style="margin: 20px 20px 0 0;"  mat-raised-button color="warn" (click)="cancelSeat(item.id)"  >Cancel</button></td>
+                    </tr>
+                </table>
+                <!-- <button style="margin:20px 20px 0 0;"  *ngIf="tableData.userName!='N/A'" mat-raised-button color="primary" (click)="cancelSeat('update')" >Update</button>
+                <button style="margin: 20px 20px 0 0;" *ngIf="tableData.userName!='N/A'" mat-raised-button color="warn" (click)="cancelSeat('cancel')"  >Cancel</button> -->
+            </div>
+        </div>
+        <div class="bookingDetails">
+            <p>Your Meetings</p>
+            <div class="table">
+                <table>
+                    
+                    <tr>
+                        <th>Team Head</th>
+                        
+                        <th>ExNo</th>
+                        <th>Start Time</th>
+                        <th>End Time</th>
+                        <th>Start Date</th>
+                        <th>End Date</th>
+                    </tr>
+                    <tr>
+                        <td>{{meetingData.teamHead}}</td>
+                        <td>{{meetingData.extentionNumber}}</td>
+                        <td>{{meetingData.startTime}}</td>
+                        <td>{{meetingData.endTime}}</td>
+                        <td>{{meetingData.fromDate}}</td>
+                        <td>{{meetingData.toDate}}</td>
+                    </tr>
+                </table>
+            
+            </div>
+        </div>
+    </div>
+    <!-- <div class="seatData">
+        <div class="total" >
+            <p>Total Seats</p>
+            <p>{{total}}</p>
+        </div>
+        <div class="booked" >
+            <p>Booked Seats</p>
+            <p>{{booked}}</p>
+        </div>
+        <div class="available" >
+            <p>Available Seats</p>
+            <p>{{available}}</p>
+        </div>
+    </div> -->
+    <div class="seatMap">
+        <!-- <div class="mapHeader">
+            <p>Hover icon for seat deatails</p>
+            <div>
+                <p><i class="fas fa-loveseat"></i> Available</p>
+                <p><i class="fas fa-loveseat"></i> Booked</p>
+            </div>
+        </div> -->
+        <div class="seats">
+            <i   (click)=bookSeat(item)  [matTooltip]="!item.fixedSeat?item.extentionNumber + ' ' + item.seatDetails + ' Available '  :item.extentionNumber + ' ' + item.seatDetails + ' Occupied by'  + item.userName " matTooltipPosition="above"  *ngFor="let item of seats" [class]="item.seatDetails!='Cabin'? 'fas fa-loveseat': 'fas fa-building' " [ngClass]="item.fixedSeat==false? 'non-occupied': '' " ><p>{{item.extentionNumber}}</p></i>
+        </div>
+    </div>
+
+</main>
+
+

@@ -1,0 +1,37 @@
+main{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+.background{
+    position: absolute;
+    background-color: #ec630254;
+    width: 90%;
+    height: 80%;
+    z-index: -1;
+    clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+    transform: rotate(40deg);
+    top: 0;
+}
+img{
+    padding:0 0 30px 0;
+}
+mat-card{
+    /* width: 30%;
+    height: 50%; */
+    padding: 5vw 10vw ;
+    /* box-shadow: 5px 5px 10px rgba(191, 191, 191, 0.179);
+    border: 1px solid rgba(128, 128, 128, 0.076); */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 2;
+    background-color: white;
+}
+form{
+    display: flex;
+    flex-direction: column;
+}
