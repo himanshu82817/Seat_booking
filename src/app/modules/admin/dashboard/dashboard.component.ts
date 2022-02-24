@@ -17,30 +17,16 @@ export class DashboardComponent implements OnInit {
       private snackBar:MatSnackBar,
       private bookingServices: BookingService ) { }
   
-  tableData = [{
-    floor: "N/A",
-    userName: "N/A",
-    extentionNumber:"N/A",
-    startTime: "N/A",
-    endTime: "N/A",
-    fromDate: "N/A",
-    toDate: "N/A",
-    id: "N/A"
-}]
-meetingData = {
-    teamHead: "N/A",
-    extentionNumber:"N/A",
-    startTime: "N/A",
-    endTime: "N/A",
-    fromDate: "N/A",
-    toDate: "N/A"
-}
+  tableData = []
+meetingData = []
   selectedFloor = "Basement"
   toggleFloor(value){
     // console.log(value)
     this.selectedFloor = value
     const data:any = {
-      data:value
+      data:value  
+      // "date":"2022/02/23",
+      // "extentionNumber":"104"
     }
     this.userService.getData(data).subscribe(x=>{
       this.total = x.totalCount
@@ -53,14 +39,18 @@ meetingData = {
     })
   }
 
-
+  length1 = 0
+  length2 = 0
   ngOnInit(): void {
     this.toggleFloor("Basement")
     this.userService.userDetails().subscribe(x=>{
-      console.log(x)
+
     this.tableData = x.data
-    this.meetingData.teamHead = x.data1[0]
+    this.meetingData = x.data1
+
     
+    this.length1 =   this.tableData.length
+    this.length2 =   this.meetingData.length
    })
   }
  
@@ -95,11 +85,19 @@ meetingData = {
     setTimeout(() => {
       location.reload()    
       // console.log("mai chl rha hu")
-    },1000);
-    
-    
-     
+    },1000);  
 
   }   
-  
+  cancelMeeting(id){
+    this.bookingServices.cancelMeeting(id).subscribe(x=>{
+      Swal.fire({
+        icon:"success",
+        text:x.message,
+      })
+    })
+    setTimeout(() => {
+      location.reload()    
+      // console.log("mai chl rha hu")
+    },1000); 
+  }
 }

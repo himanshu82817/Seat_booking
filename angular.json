@@ -72,7 +72,9 @@
               "browserTarget": "seating-management:build:production"
             },
             "development": {
-              "browserTarget": "seating-management:build:development"
+              "browserTarget": "seating-management:build:development",
+              "port":8080,
+              "host":"192.168.21.234"
             }
           },
           "defaultConfiguration": "development"

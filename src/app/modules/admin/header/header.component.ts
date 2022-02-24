@@ -9,8 +9,9 @@ import { Router } from '@angular/router';
 export class HeaderComponent implements OnInit {
 
   constructor(private router: Router) { }
-
+   name:any;
   ngOnInit(): void {
+    this.name=localStorage.getItem('name');
   }
   signOut(){
     localStorage.removeItem('token')

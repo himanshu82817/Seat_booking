@@ -1,7 +1,7 @@
 import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { BookingService } from 'src/app/services/booking.service';
 import Swal from 'sweetalert2';
 
@@ -11,10 +11,12 @@ import Swal from 'sweetalert2';
   styleUrls: ['./booking.component.css']
 })
 export class BookingComponent implements OnInit {
+
+  
   formControl = new FormControl();
   myFormGroup: FormGroup;
   constructor(public formBuilder: FormBuilder,
-    private bookingServices: BookingService) {
+    private bookingServices: BookingService, private router:Router) {
     this.myFormGroup = this.formBuilder.group({
       floor: ['',Validators.required],
       exNo: ['',[Validators.max(531),Validators.min(101)]],
@@ -26,7 +28,7 @@ export class BookingComponent implements OnInit {
       seat_type: ['',Validators.required],
     })
   }
-
+  progress = false
   seatDetails = {
     floor: '',
     exNo: '',
@@ -34,36 +36,11 @@ export class BookingComponent implements OnInit {
   }
   submitForm(value) {
     if(this.myFormGroup.valid){
-      let timerInterval
-      Swal.fire({
-        // title: 'Auto close alert!',
-        html: 'Booking in progress...',
-        timer: 2000,
-        timerProgressBar: true,
-        didOpen: () => {
-          Swal.showLoading()
-          const b: any = Swal.getHtmlContainer().querySelector('b')
-          timerInterval = setInterval(() => {
-            b.textContent = Swal.getTimerLeft()
-          }, 10000)
-        },
-        willClose: () => {
-          clearInterval(timerInterval)
-        }
-      }).then((result) => {
-        /* Read more about handling dismissals below */
-        if (result.dismiss === Swal.DismissReason.timer) {
-          Swal.fire({
-            icon: 'success',
-            // title: 'Oops...',
-            text:'Seat Booked',
-          })
-        }
-      })
-
+  
+    this.progress = true   
     let submitData = {
       floor: value.floor,
-      extentionNumber: value.exNo,
+      extentionNumber: Number(value.exNo),
       startTime: value.start_time,
       endTime: value.end_time,
       fromDate: new DatePipe('en-Us').transform(value.start_date, 'YYYY/MM/dd'),
@@ -74,26 +51,32 @@ export class BookingComponent implements OnInit {
     }
     console.log(submitData, "submitdata")
     this.bookingServices.bookseat(submitData).subscribe(x => {
-      console.log(x);
-      if (x.status===false) {
+      
+      if (x.status===true) {
+    
+        this.progress = false
         Swal.fire({
 
           text: `${x.message}`,
-          icon: 'warning',
-
+          icon: 'success',
         })
+        
+       
+      }else{
+        this.progress = false
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: `${x.message}`,
+        })
+     
       }
 
 
 
       // console.log(x)
     }, err => {
-      Swal.fire({
-        icon: 'error',
-        title: 'Oops...',
-        text: `Something went wrong!`,
-      })
-
+     
       console.log(err)
     }
     )
@@ -115,7 +98,7 @@ export class BookingComponent implements OnInit {
     }
   }
   floors = ["Basement","Ground", "First Floor", "Second Floor", "Third Floor"]
-  seat_type = ["Cabin", "Desktop Workstation", "Conference Room", "Shared Cabin"]
+  seat_type = ["Cabin", "Desktop Workstation", "Conference Room", "Shared Cabin","Open Area Workstation"]
   work_type = ["Work From Home", "Office"]
   time_slots = [
     {slot_name:"9am-1pm", value:{start_time:'9:00',end_time:'1:00'}},

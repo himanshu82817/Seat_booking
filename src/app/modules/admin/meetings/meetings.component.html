@@ -1,4 +1,7 @@
 <main>
+    <div *ngIf="progress" style="position: fixed;width: 100%;height: 100%;display: flex;justify-content: center;align-items: center;background-color: rgba(0, 0, 0, 0.411);top: 0;left: 0;z-index: 2;" class="progress">
+        <mat-spinner></mat-spinner>
+    </div>
     <p class="heading">Fill details to book a Meeting</p>
     <div class="form">
         <form action="" [formGroup]= "myFormGroup" (ngSubmit)="submitForm(myFormGroup.value)" >
@@ -22,9 +25,12 @@
             </div>
             <div>
                 <mat-form-field appearance="outline">
-                    <mat-label>Enter Extention Number</mat-label>
-                    <input formControlName="exNo" type="number" matInput placeholder="Placeholder"  >
-                    <mat-error *ngIf="myFormGroup.invalid">Select a valid Extention No.</mat-error>
+                    <mat-label>Select Extention Number</mat-label>
+                    <mat-select formControlName="exNo" >
+                        <mat-option value="206" >206</mat-option>
+                        <mat-option value="505" >505</mat-option>
+                    </mat-select>
+                    
                 </mat-form-field>
                 <mat-form-field   appearance="outline" >
                     <mat-label>Enter Team Head Name</mat-label>

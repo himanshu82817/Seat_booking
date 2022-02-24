@@ -26,38 +26,14 @@ export class MeetingsComponent implements OnInit {
                   end_date: ['',Validators.required],
               }) }
 
-
+  progress = false
   submitForm(value){
     if(this.myFormGroup.valid){
-      let timerInterval
-      Swal.fire({
-        html: 'Booking in progress...',
-        timer: 2000,
-        timerProgressBar: true,
-        didOpen: () => {
-          Swal.showLoading()
-          const b: any = Swal.getHtmlContainer().querySelector('b')
-          timerInterval = setInterval(() => {
-            b.textContent = Swal.getTimerLeft()
-          }, 10000)  
-        },
-        willClose: () => {
-          clearInterval(timerInterval)
-        }
-      }).then((result) => {
-        /* Read more about handling dismissals below */
-        if (result.dismiss === Swal.DismissReason.timer) {
-          Swal.fire({
-            icon: 'success',
-            // title: 'Oops...',
-            text:'Seat Booked',
-          })
-        }
-      })
+      this.progress = true
       
       let submitData = {
         email:this.mails,
-        extentionNumber: value.exNo,
+        extentionNumber: Number(value.exNo),
         TeamHead: value.teamHead,
         startTime: value.start_time,
         endTime: value.end_time,
@@ -67,7 +43,16 @@ export class MeetingsComponent implements OnInit {
       }
       // console.log(submitData)
       this.bookingServices.bookMeeting(submitData).subscribe(x=>{
-        if (!x.status) {
+        
+        if (x.status===true) {
+          this.progress = false
+          Swal.fire({
+            text: `${x.message}`,
+            icon: 'success',
+  
+          })
+        }else{
+          this.progress = false
           Swal.fire({
   
             text: `${x.message}`,

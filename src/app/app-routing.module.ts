@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { SignInComponent } from './components/sign-in/sign-in.component';
 
+
 const routes: Routes = [
   { path:'signIn', component:SignInComponent },
   
@@ -13,6 +14,7 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
+  // controllers: [SignUpController]
 })
 export class AppRoutingModule { }

@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class UserService {
-  authLink="http://localhost:3000/api/v1"
+  authLink="http://192.168.21.234:3000/api/v1"
   constructor(private htttp:HttpClient) { }
   getData(data):Observable<any>{
     // console.log("data",data);

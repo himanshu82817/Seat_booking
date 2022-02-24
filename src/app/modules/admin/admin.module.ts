@@ -22,6 +22,7 @@ import { BookingComponent } from './booking/booking.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatChipsModule} from '@angular/material/chips';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 
 import { HttpClientModule } from '@angular/common/http';
@@ -53,7 +54,8 @@ import { MeetingsComponent } from './meetings/meetings.component';
     MatSnackBarModule,
     MatExpansionModule,
     MatDialogModule,
-    MatChipsModule
+    MatChipsModule,
+    MatProgressSpinnerModule
   ]
 })
 export class AdminModule { }

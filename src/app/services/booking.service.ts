@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class BookingService {
-  authLink="http://localhost:3000/api/v1"
+  authLink="http://192.168.21.234:3000/api/v1"
   constructor(private htttp:HttpClient) { }
   bookseat(data):Observable<any>{
     let token=localStorage.getItem("token");
@@ -36,5 +36,8 @@ export class BookingService {
 
 
     return this.htttp.post<any>(`${this.authLink}/conference`, data,{headers:headers})
+  }
+  cancelMeeting(id):Observable<any>{
+      return this.htttp.delete<any>(`${this.authLink}/conference/conference-hall`,{body:{id:id}})
   }
 }

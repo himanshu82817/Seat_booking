@@ -35,9 +35,10 @@ export class SignInComponent implements OnInit {
     this.signInService.signIn(submitData).subscribe(x=> {
       let token = x.token
       let role = x.user.role
-      
+      let name=x.user.name
       localStorage.setItem("token",token);
       localStorage.setItem("role",role);
+      localStorage.setItem("name",name);
             this.router.navigate(['/admin']);
       },
         err =>

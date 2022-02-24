@@ -6,6 +6,8 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatInputModule} from '@angular/material/input';
 import {MatButtonModule} from '@angular/material/button';
 import {MatCardModule} from '@angular/material/card';
+import {MatSelectModule} from '@angular/material/select';
+
 
 
 
@@ -16,8 +18,11 @@ import { SignInComponent } from './components/sign-in/sign-in.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import {MatDialogModule} from '@angular/material/dialog';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { SignUpComponent } from './components/sign-up/sign-up.component';
+
 
 
 @NgModule({
@@ -25,6 +30,8 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
     AppComponent,
     SignInComponent,
     NotFoundComponent,
+    SignUpComponent,
+  
    
   ],
   imports: [
@@ -38,7 +45,9 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
     MatCardModule,
     ReactiveFormsModule,
     HttpClientModule,
-    MatDialogModule
+    MatDialogModule,
+    MatProgressSpinnerModule,
+    MatSelectModule
 
 
   ],

@@ -18,10 +18,11 @@ main{
 .header{height: 10%;position: relative;}
 .header i{
     position: absolute;
-    bottom: 50%;
+    bottom: 38%;
     left: 3%;
     display: none;
     font-size: 20px
+    
 }
 .router-outlet{height: 85%;overflow-y:scroll;}
 ::-webkit-scrollbar{width: 10px;}
@@ -48,6 +49,22 @@ main{
         transform: translateX(0vw);
     }
     .holder{width: 100%;}
-    .header i{display:unset;cursor: pointer;}
+    .header i{display:unset;cursor: pointer;;}
 }
 
+@media (max-width:896px) {
+    
+    .header i{display:unset;cursor: pointer; bottom: 55%; }
+}
+@media (max-width:844px) {
+    
+    .header i{display:unset;cursor: pointer; bottom: 53%; }
+}
+@media (max-width:640px) {
+    
+    .header i{display:unset;cursor: pointer; bottom: 39%; }
+}
+@media (max-width:667px) {
+    
+    .header i{display:unset;cursor: pointer; bottom: 40%; }
+}

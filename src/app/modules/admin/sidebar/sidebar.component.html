@@ -4,7 +4,7 @@
     </div>
     <div class="options">
         <div [routerLink]="item.routerLink" *ngFor="let item of options" class="option">
-            <p><i [class]="item.img"></i> {{item.name}}</p>
+            <p (click)="getRoute()" ><i [class]="item.img"></i> {{item.name}}</p>
         </div>
     </div>
 </main>

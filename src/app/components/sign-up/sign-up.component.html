@@ -1,0 +1,42 @@
+<main>
+  <form class="example-form" [formGroup]="signUpForm" (ngSubmit)="signUp(signUpForm.value)">
+    <mat-form-field appearance="outline">
+       
+        <mat-label>Name</mat-label>
+        <input  formControlName='name' matInput>
+      </mat-form-field>
+      <div class="example-container">
+        <mat-form-field appearance="outline">
+          <mat-label>Enter your email</mat-label>
+          <input formControlName='email' matInput placeholder="" [formControl]="email" required>
+          <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+        </mat-form-field>
+      </div>
+      <mat-form-field appearance="outline">
+        <mat-label>Role</mat-label>
+        <mat-select  formControlName='role'>
+          <mat-option *ngFor="let role of roles" [value]="role">
+            {{role}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <br>
+      <mat-form-field appearance="outline">
+        <mat-label>EmployeeId</mat-label>
+        <input  formControlName='employeeId'matInput>
+      </mat-form-field>
+      <br>
+      <mat-form-field appearance="outline">
+        <mat-label>Member</mat-label>
+        <mat-select  formControlName='member'>
+          <mat-option *ngFor="let member of members" [value]="member">
+            {{member}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <br>
+      <button style="background-color:#ff6a00;color: white; width: fit-content; " mat-raised-button >Sign Up</button>
+      
+  </form>
+
+</main>
