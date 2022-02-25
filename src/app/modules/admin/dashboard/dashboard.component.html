@@ -85,7 +85,7 @@
             </div>
         </div>
         <div class="seats">
-            <i   (click)=bookSeat(item)  [matTooltip]="!item.fixedSeat?item.extentionNumber + ' ' + item.seatDetails + ' Available '  :item.extentionNumber + ' ' + item.seatDetails + ' Occupied by'  + item.userName " matTooltipPosition="above"  *ngFor="let item of seats" [class]=' item.icon ' [ngClass]="item.fixedSeat==false? 'non-occupied': '' "  ><p>{{item.extentionNumber}}</p></i>
+            <i   (click)=bookSeat(item) [ngStyle]="{'color':item.freeTime=='orange'? 'orange': '' }"  [matTooltip]="!item.fixedSeat?item.extentionNumber + ' ' + item.seatDetails + ' Available '  :item.extentionNumber + ' ' + item.seatDetails + ' Occupied by'  + item.userName " matTooltipPosition="above"  *ngFor="let item of seats" [class]=' item.icon ' [ngClass]="item.fixedSeat==false? 'non-occupied': '' "  ><p>{{item.extentionNumber}}</p></i>
         </div>
     </div>
 

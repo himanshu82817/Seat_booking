@@ -109,6 +109,10 @@ th{
     width: 100%;
     text-align: center;
 }
+.seats i:hover{
+    
+    
+}
 .seatDetails{
     clip-path: polygon(0% 0%, 100% 0%, 100% 80%, 6% 80%, 0 100%, 0 57%, 0 53%);
     width: 0px;

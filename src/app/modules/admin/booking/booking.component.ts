@@ -87,15 +87,33 @@ export class BookingComponent implements OnInit {
         text: `Enter valid values`,
       })
     }
-    
-
   }
+  seatInfo = []
+  exNo
   ngOnInit(): void {
     this.seatDetails = {
       floor: localStorage.getItem("Floor"),
       exNo: localStorage.getItem("ExNo"),
       seat_type: localStorage.getItem("seat_type")
     }
+    this.exNo = localStorage.getItem("exNo")
+    let data = {
+      "extentionNumber":this.seatDetails.exNo
+    }
+    this.bookingServices.getSeatInfo(data).subscribe(x=>{
+      console.log(x.data)
+      this.seatInfo = x.data
+    })
+    // this.getSeatInfo() 
+  }
+  getSeatInfo(){
+    let data = {
+      "extentionNumber":this.exNo
+    }
+    this.bookingServices.getSeatInfo(data).subscribe(x=>{
+      console.log(x.data)
+      this.seatInfo = x.data
+    })
   }
   floors = ["Basement","Ground", "First Floor", "Second Floor", "Third Floor"]
   seat_type = ["Cabin", "Desktop Workstation", "Conference Room", "Shared Cabin","Open Area Workstation"]

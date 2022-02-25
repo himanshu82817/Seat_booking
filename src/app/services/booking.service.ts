@@ -40,4 +40,8 @@ export class BookingService {
   cancelMeeting(id):Observable<any>{
       return this.htttp.delete<any>(`${this.authLink}/conference/conference-hall`,{body:{id:id}})
   }
+
+  getSeatInfo(exno):Observable<any>{
+    return this.htttp.post<any>(`${this.authLink}/seat-form/table-booking`,exno)
+  }
 }

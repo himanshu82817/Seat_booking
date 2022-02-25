@@ -16,7 +16,7 @@
                 </mat-form-field>
                 <mat-form-field appearance="outline">
                     <mat-label>Enter Extention Number</mat-label>
-                    <input formControlName="exNo" type="number" matInput placeholder="Placeholder" [(ngModel)]="seatDetails.exNo" >
+                    <input (change)="getSeatInfo()" [(ngModel)]="exNo" formControlName="exNo" type="number" matInput placeholder="Placeholder" [(ngModel)]="seatDetails.exNo" >
                     <mat-error *ngIf="myFormGroup.invalid">Select a valid seat No.</mat-error>
                 </mat-form-field>
             </div>
@@ -60,5 +60,20 @@
             </div>
             <button mat-raised-button color="primary" >Book Seat</button>
         </form>
+        <div class="table">
+            <p *ngIf="seatInfo[0].userName!=null && seatInfo[0].startTime==null " >This Seat is reserved for <b>{{seatInfo[0].userName}}</b></p>
+            <table *ngIf="seatInfo[0].userName!=null && seatInfo[0].startTime!=null" >
+                <tr>
+                    <th>User</th>
+                    <th>Time</th>
+                    <th>Date</th>
+                </tr>
+                <tr *ngFor="let item of seatInfo" >
+                    <td>{{item.userName}}</td>
+                    <td>{{item.startTime}} to {{item.endTime}}</td>
+                    <td>{{item.fromDate}} to {{item.toDate}}</td>
+                </tr>
+            </table>
+        </div>
     </div>
 </main>
