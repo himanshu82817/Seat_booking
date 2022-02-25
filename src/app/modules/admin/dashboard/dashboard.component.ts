@@ -54,7 +54,7 @@ meetingData = []
    })
   }
  
-  floors = ["Basement","Ground","First Floor", "Second Floor", "Third Floor"]
+  floors = ["All Floors","Basement","Ground","First Floor", "Second Floor", "Third Floor"]
   total 
   booked 
   available
